@@ -29,7 +29,13 @@ jobs:
       - uses: "actions/checkout@v4"
         with:
           path: "${{ env.workdir }}/src"
-
+          
+      - name: Setup scanner directories
+        run: |
+          mkdir -p "${{ env.workdir }}/.config/Securin"
+          mkdir -p "${{ env.workdir }}/logs"
+          chmod -R 755 "${{ env.workdir }}/.config"
+          chmod -R 755 "${{ env.workdir }}/logs"
      
 
       - name: Setup AWS and Download Runner
